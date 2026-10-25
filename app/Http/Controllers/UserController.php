@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\User;
+
 class UserController extends Controller
 {
     public function index()
     {
-        $users = [
-            ['id' => 1, 'name' => 'Admin One',
-             'role' => 'Administrator'],
-            ['id' => 2, 'name' => 'Staff Two',
-             'role' => 'Cashier'],
-            ['id' => 3, 'name' => 'Staff Three',
-             'role' => 'Cashier'],
-            ['id' => 4, 'name' => 'Staff Four',
-             'role' => 'Manager'],
-            ['id' => 5, 'name' => 'Staff Five',
-             'role' => 'Inventory Staff'],
-        ];
+        // Retrieve user records from the database
+        $users = User::all();
 
+        // Pass records to the Blade view
         return view('users', compact('users'));
     }
 }

@@ -2,23 +2,16 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Customer;
+
 class CustomerController extends Controller
 {
     public function index()
     {
-        $customers = [
-            ['id' => 1, 'name' => 'Juan Dela Cruz',
-             'email' => 'juan@example.com'],
-            ['id' => 2, 'name' => 'Maria Santos',
-             'email' => 'maria@example.com'],
-            ['id' => 3, 'name' => 'Pedro Reyes',
-             'email' => 'pedro@example.com'],
-            ['id' => 4, 'name' => 'Ana Garcia',
-             'email' => 'ana@example.com'],
-            ['id' => 5, 'name' => 'Jose Mendoza',
-             'email' => 'jose@example.com'],
-        ];
+        // Retrieve customer records from the database
+        $customers = Customer::all();
 
+        // Pass records to the Blade view
         return view('customers', compact('customers'));
     }
 }
